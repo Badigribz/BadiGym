@@ -54,5 +54,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Split::class);
     }
-
+    public function progressEntries()
+    {
+        return $this->hasMany(ProgressEntry::class);
+    }
 }
