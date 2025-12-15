@@ -15,14 +15,17 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:sanctum')->group(function ()
+{
     Route::post('logout', [AuthController::class, 'logout']);
+
     Route::apiResource('workouts', WorkoutController::class);
 
     Route::get('splits', [SplitController::class, 'index']);
     Route::post('splits', [SplitController::class, 'store']);
     Route::post('splits/assign', [SplitController::class, 'assignWorkout']);
     Route::delete('splits/remove/{id}', [SplitController::class, 'removeWorkout']);
+    
     Route::get('progress', [ProgressController::class, 'index']);
     Route::post('progress', [ProgressController::class, 'store']);
     Route::get('progress/{id}', [ProgressController::class, 'show']);
